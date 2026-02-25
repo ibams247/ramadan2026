@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Ramadan Journey</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0f172a" />
+
+  <link rel="manifest" href="manifest.json" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="app-header">
+    <h1>Ramadan Journey</h1>
+    <p class="subtitle">Make the most of your Ramadan</p>
+  </header>
+
+  <main>
+    <!-- HOME SCREEN -->
+    <section id="screen-home" class="screen active">
+      <h2>Home</h2>
+      <div class="card">
+        <h3>Assalamu alaikum</h3>
+        <p>May your fasting and worship be accepted.</p>
+      </div>
+
+      <div class="card">
+        <h3>Quick Links</h3>
+        <div class="button-row">
+          <button class="btn primary" data-nav="screen-routine">Daily Routine</button>
+          <button class="btn secondary" data-nav="screen-quran-plan">Qur'an Plan</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Next Focus</h3>
+        <p id="next-task-text">
+          Use this app to keep track of your Tahajjud, Qur'an, and prayers.
+        </p>
+      </div>
+    </section>
+
+    <!-- DAILY ROUTINE SCREEN -->
+    <section id="screen-routine" class="screen">
+      <h2>Daily Ramadan Routine</h2>
+
+      <div class="timeline-section">
+        <h3>Night</h3>
+        <ul>
+          <li><label><input type="checkbox" /> Sleep by 10:00 pm</label></li>
+        </ul>
+      </div>
+
+      <div class="timeline-section">
+        <h3>Pre-Fajr (3:00 am to Fajr)</h3>
+        <ul>
+          <li><label><input type="checkbox" /> Wake up by 3:00 am</label></li>
+          <li><label><input type="checkbox" /> Tahajjud 3:30 am to 4:15 am</label></li>
+          <li><label><input type="checkbox" /> Study Qur'an 4:15 am to 4:35 am (at least 10 verses with meaning)</label></li>
+          <li><label><input type="checkbox" /> Dua 4:35 am to 4:45 am</label></li>
+          <li><label><input type="checkbox" /> Eat Sahur 4:45 am until Fajr</label></li>
+          <li><label><input type="checkbox" /> Prepare for Salatu Subhi after Sahur</label></li>
+          <li><label><input type="checkbox" /> Pray Salatu Subhi at the correct time</label></li>
+          <li><label><input type="checkbox" /> Morning Adhkar until about 6:00 to 6:30 am</label></li>
+          <li><label><input type="checkbox" /> Rest or prepare for the day until 7:00 am</label></li>
+        </ul>
+      </div>
+
+      <div class="timeline-section">
+        <h3>Daytime</h3>
+        <ul>
+          <li><label><input type="checkbox" /> Pray Salatu Duha (at least 4 rakaat) between 9:00 am and 11:30 am</label></li>
+          <li><label><input type="checkbox" /> Constantly listen to Qur'an during the day</label></li>
+        </ul>
+      </div>
+
+      <div class="timeline-section">
+        <h3>Afternoon</h3>
+        <ul>
+          <li><label><input type="checkbox" /> Pray Salatu Zuhr at the correct time and do 20 mins Adhkar</label></li>
+          <li><label><input type="checkbox" /> Pray Salatu Asr and do 20 mins evening Adhkar and recite Qur'an</label></li>
+        </ul>
+      </div>
+
+      <div class="timeline-section">
+        <h3>Evening and Night</h3>
+        <ul>
+          <li><label><input type="checkbox" /> Before breaking fast, make dua and ask Allah for anything you need</label></li>
+          <li><label><input type="checkbox" /> Break your fast at Maghrib with what you can afford</label></li>
+          <li><label><input type="checkbox" /> Pray Salatu Maghrib</label></li>
+          <li><label><input type="checkbox" /> Pray Salatu Isha at the correct time</label></li>
+          <li><label><input type="checkbox" /> Pray 11 rakaat of Taraweeh (for example until about 9:00 pm)</label></li>
+          <li><label><input type="checkbox" /> Spend 5 minutes reflecting: what went well, what to improve, what to stop, what to start</label></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- QURAN PLAN SCREEN -->
+    <section id="screen-quran-plan" class="screen">
+      <h2>Qur'an Plan</h2>
+
+      <div class="card">
+        <p>Select how many days you want to complete the Qur'an in.</p>
+        <div class="button-row wrap">
+          <button class="btn small" data-plan="30">30 days</button>
+          <button class="btn small" data-plan="15">15 days</button>
+          <button class="btn small" data-plan="12">12 days</button>
+          <button class="btn small" data-plan="10">10 days</button>
+          <button class="btn small" data-plan="6">6 days</button>
+        </div>
+      </div>
+
+      <div id="plan-details" class="card">
+        <h3 id="plan-title">No plan selected</h3>
+        <p id="plan-description">Choose a plan above to see your daily pages per prayer.</p>
+
+        <ul id="plan-list"></ul>
+
+        <h4>Today's checklist</h4>
+        <ul id="plan-checklist" class="checklist"></ul>
+      </div>
+    </section>
+
+    <!-- REFLECTION SCREEN -->
+    <section id="screen-reflection" class="screen">
+      <h2>Daily Reflection</h2>
+      <div class="card">
+        <label>
+          What did you do well today?
+          <textarea id="ref-good" rows="3"></textarea>
+        </label>
+        <label>
+          What needs improvement?
+          <textarea id="ref-improve" rows="3"></textarea>
+        </label>
+        <label>
+          What should you start or stop tomorrow?
+          <textarea id="ref-start-stop" rows="3"></textarea>
+        </label>
+        <button class="btn primary" id="save-reflection">Save Reflection</button>
+        <p id="reflection-status" class="status-text"></p>
+      </div>
+    </section>
+
+    <!-- CHARITY SCREEN -->
+    <section id="screen-charity" class="screen">
+      <h2>Charity (Sadaqah)</h2>
+      <div class="card">
+        <p>Above all, increase your sadaqah by helping the poor and the needy.</p>
+        <ul>
+          <li><label><input type="checkbox" /> I gave something in charity today (money, food, or help)</label></li>
+          <li><label><input type="checkbox" /> I helped someone in need</label></li>
+          <li><label><input type="checkbox" /> I planned a charity goal for this week</label></li>
+        </ul>
+        <label>
+          Notes and ideas for charity:
+          <textarea id="charity-notes" rows="4" placeholder="Write names, ideas, and reminders"></textarea>
+        </label>
+        <button class="btn secondary" id="save-charity">Save Charity Notes</button>
+        <p id="charity-status" class="status-text"></p>
+      </div>
+    </section>
+  </main>
+
+  <!-- BOTTOM NAV -->
+  <nav class="bottom-nav">
+    <button class="nav-btn active" data-nav="screen-home">Home</button>
+    <button class="nav-btn" data-nav="screen-routine">Routine</button>
+    <button class="nav-btn" data-nav="screen-quran-plan">Qur'an</button>
+    <button class="nav-btn" data-nav="screen-reflection">Reflection</button>
+    <button class="nav-btn" data-nav="screen-charity">Charity</button>
+  </nav>
+
+  <script src="app.js"></script>
+</body>
+</html>
